@@ -1,4 +1,5 @@
 # Word Frequency Counter
 A simple word frequency counter built using vanilla JS.
 
-[https://word-frequency-app.herokuapp.com/](Click here) to try it.
+<a href="https://word-frequency-app.herokuapp.com/" target="_blank">Cick here</a> to try it.
+
