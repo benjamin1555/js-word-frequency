@@ -19,6 +19,20 @@ h1 {
   font-weight: 300;
 }
 
+.invalid {
+  border: 1px solid #ff6b6b;
+}
+
+p.error-message {
+  display: none;
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 1rem;
+}
+
 .content {
   width: 500px;
   margin: 2rem auto;
@@ -36,6 +50,7 @@ h1 {
       font-family: $font-stack;
       margin-bottom: 1rem;
       padding: 0.5rem;
+      border-radius: 5px;
     }
   }
 

@@ -4,17 +4,26 @@ function wordFrequency() {
   const countBtn = document.querySelector('.input-area__submit');
 
   countBtn.addEventListener('click', () => {
-    const userInput = getUserInput();
-    const parsedContent = parseContent(userInput);
-    const wordsCount = countWords(parsedContent);
-    const sortedCount = sortWordsCount(wordsCount);
-    displayWordFrequency(sortedCount);
+    clearDOMinputErrors();
+    try {
+      const userInput = getUserInput();
+      const parsedContent = parseContent(userInput);
+      const wordsCount = countWords(parsedContent);
+      const sortedCount = sortWordsCount(wordsCount);
+      displayWordFrequency(sortedCount);
+    } catch (err) {
+      renderError();
+    }
   });
 }
 
 function getUserInput() {
   const textarea = document.getElementById('text-content');
-  return isInputNonEmpty(textarea) ? textarea.value.trim() : renderError();
+  if (isInputNonEmpty(textarea)) {
+    return textarea.value.trim()
+  } else {
+    throw new Error('Content cannot be empty.');
+  }
 }
 
 function isInputNonEmpty(textarea) {
@@ -34,8 +43,15 @@ function removeStopWord(word) {
   return !stopWords.includes(word);
 }
 
+function clearDOMinputErrors() {
+  document.getElementById('text-content').classList.remove('invalid');
+  document.querySelector('p.error-message').style.display = 'none';
+}
+
 function renderError() {
-  throw new Error('Content cannot be empty.');
+  console.log(document.getElementById('text-content').classList)
+  document.getElementById('text-content').classList.add('invalid');
+  document.querySelector('p.error-message').style.display = 'block';
 }
 
 function countWords(words) {
