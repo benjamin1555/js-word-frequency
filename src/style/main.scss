@@ -1,0 +1,81 @@
+@import 'variables';
+@import 'button';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+::placeholder {
+  font-family: $font-stack;
+}
+
+body {
+  font-family: $font-stack;
+  line-height: 1.5;;
+}
+
+h1 {
+  font-weight: 300;
+}
+
+.content {
+  width: 500px;
+  margin: 2rem auto;
+
+  .header h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .input-area {
+    display: flex;
+    flex-direction: column;
+
+    textarea {
+      font-family: $font-stack;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+    }
+  }
+
+  .results-area {
+    table {
+      display: none;
+      width: 500px;
+      margin: 25px auto;
+      border-collapse: collapse;
+      border: 1px solid #eee;
+      border-bottom: 2px solid $secondary;
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
+         0px 10px 20px rgba(0,0,0,0.05),
+         0px 20px 20px rgba(0,0,0,0.05),
+         0px 30px 20px rgba(0,0,0,0.05);
+      tr {
+         &:hover {
+          background: #f4f4f4;
+
+          td {
+            color: #555;
+          }
+        }
+      }
+      th, td {
+        color: #999;
+        border: 1px solid #eee;
+        padding: 12px 35px;
+        border-collapse: collapse;
+        text-align: center;
+      }
+      th {
+        background: $secondary;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 12px;
+        &.last {
+          border-right: none;
+        }
+      }
+    }
+  }
+}

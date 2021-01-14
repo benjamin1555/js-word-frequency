@@ -1,0 +1,15 @@
+.btn {
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $secondary;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: $primary-700;
+  color: white;
+  cursor: pointer;
+}
