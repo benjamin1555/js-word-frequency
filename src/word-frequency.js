@@ -1,20 +1,17 @@
 import stopWords from './stop-words.js';
 
 function wordFrequency() {
-  const countBtn = document.querySelector('.input-area__submit');
-
-  countBtn.addEventListener('click', () => {
-    clearDOMinputErrors();
-    try {
-      const userInput = getUserInput();
-      const parsedContent = parseContent(userInput);
-      const wordsCount = countWords(parsedContent);
-      const sortedCount = sortWordsCount(wordsCount);
-      displayWordFrequency(sortedCount);
-    } catch (err) {
-      renderError();
-    }
-  });
+  clearDOMinputErrors();
+  try {
+    const userInput = getUserInput();
+    const parsedContent = parseContent(userInput);
+    const wordsCount = countWords(parsedContent);
+    const sortedCount = sortWordsCount(wordsCount);
+    displayWordFrequency(sortedCount);
+    return sortedCount;
+  } catch (err) {
+    renderError();
+  }
 }
 
 function getUserInput() {
@@ -49,7 +46,6 @@ function clearDOMinputErrors() {
 }
 
 function renderError() {
-  console.log(document.getElementById('text-content').classList)
   document.getElementById('text-content').classList.add('invalid');
   document.querySelector('p.error-message').style.display = 'block';
 }
