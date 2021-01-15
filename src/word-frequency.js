@@ -65,7 +65,7 @@ function countWords(words) {
 
 function sortWordsCount(wordsCount) {
   const sortable = [];
-  const totalNumOfWords = Object.keys(wordsCount).length;
+  const totalNumOfWords = calcTotalNumOfWords(wordsCount);
   for (let word in wordsCount) {
     let percentage = calcWordFrequency(wordsCount[word], totalNumOfWords);
     if (typeof percentage === 'number') {
@@ -75,6 +75,10 @@ function sortWordsCount(wordsCount) {
   }
   console.log(sortable);
   return sortable.sort((a, b) => b[1] - a[1]);
+}
+
+function calcTotalNumOfWords(wordsCount) {
+  return Object.values(wordsCount).reduce((acc, cur) => acc + cur);
 }
 
 function calcWordFrequency(occurence, totalNumOfWOrds) {
