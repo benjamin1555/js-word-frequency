@@ -34,12 +34,11 @@ p.error-message {
 }
 
 .content {
-  width: 500px;
   margin: 2rem auto;
 
   .header h1 {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   .input-area {
@@ -55,9 +54,13 @@ p.error-message {
   }
 
   .results-area {
+    #myChart {
+      margin: 3rem 0;
+    }
+
     table {
       display: none;
-      width: 500px;
+      width: 100%;
       margin: 25px auto;
       border-collapse: collapse;
       border: 1px solid #eee;
@@ -92,5 +95,18 @@ p.error-message {
         }
       }
     }
+  }
+}
+
+
+@media (min-width: 100px) {
+  .content {
+    width: 90%;
+  }
+}
+
+@media (min-width: 992px) {
+  .content {
+    width: 600px;
   }
 }
