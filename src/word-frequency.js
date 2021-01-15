@@ -10,6 +10,7 @@ function wordFrequency() {
     displayWordFrequency(sortedCount);
     return sortedCount;
   } catch (err) {
+    console.log(err);
     renderError();
   }
 }
@@ -66,14 +67,19 @@ function sortWordsCount(wordsCount) {
   const sortable = [];
   const totalNumOfWords = Object.keys(wordsCount).length;
   for (let word in wordsCount) {
-    const percentage = calcWordFrequency(wordsCount[word], totalNumOfWords).toFixed(1);
+    let percentage = calcWordFrequency(wordsCount[word], totalNumOfWords);
+    if (typeof percentage === 'number') {
+      percentage = percentage.toFixed(3);
+    }
     sortable.push([word, wordsCount[word], percentage]);
   }
+  console.log(sortable);
   return sortable.sort((a, b) => b[1] - a[1]);
 }
 
 function calcWordFrequency(occurence, totalNumOfWOrds) {
-  return occurence / totalNumOfWOrds * 100;
+  const percentage = occurence / totalNumOfWOrds * 100;
+  return percentage >= 1 ? percentage : '< 1';
 }
 
 function displayWordFrequency(sortedCount) {

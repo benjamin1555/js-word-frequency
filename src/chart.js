@@ -50,14 +50,17 @@ function getData(data) {
 }
 
 function filterData(data) {
-  const mostUsedWordLimit = Math.ceil(constValues['PERCENTAGE_TO_KEEP'] * data.length);
-  const filteredData = data.slice(0, mostUsedWordLimit);
-  filteredData.push([
-    'Rest of words',
-    calcLessUsedWordsCount(filteredData, data.length),
-    calcLessUsedWordsPercentage(filteredData)
-  ]);
-  return filteredData;
+  if (data.length > 30) {
+    const mostUsedWordLimit = Math.ceil(constValues['PERCENTAGE_TO_KEEP'] * data.length);
+    const filteredData = data.slice(0, mostUsedWordLimit);
+    filteredData.push([
+      'Rest of words',
+      calcLessUsedWordsCount(filteredData, data.length),
+      calcLessUsedWordsPercentage(filteredData)
+    ]);
+    return filteredData;
+  }
+  return data;
 }
 
 function calcLessUsedWordsCount(filteredData, totalWordCount) {
